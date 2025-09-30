@@ -1,0 +1,14 @@
+<!-- template definition -->
+<p>
+  stock-item works!
+</p>
+
+<div class="stock-container">
+  <div class="name"><h3>{{ stock.name + ' (' + stock.code + ')' }}</h3></div>
+
+  <!-- [class] property binding -->
+  <div [class]="stock.isPositiveChange() ? 'positive' : 'negative'">£ {{ stock.price }}</div>
+
+  <!-- (click) binds to the click event -->
+  <button (click)="toggleFavourite($event)" [disabled]="stock.favourite">Add to Favourite</button>
+</div>

@@ -1,0 +1,31 @@
+/* styles for the component */
+p {
+    /* homeage to: https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/ */
+    background-color: rebeccapurple;
+    color: white;
+    padding: 1em;
+}
+
+.stock-container {
+    border: 1px solid rebeccapurple;
+    border-radius: 5px;
+    display: inline-block;
+    padding: 10px;
+}
+
+    .stock-container .name h3,
+    .stock-container .name h4 {
+        display: inline-block;
+    }
+
+    .positive {
+        background-color: #DFFFDF;
+        color: #005F00;
+        padding: 1em;
+    }
+
+    .negative {
+        background-color: #FFE3E3;
+        color: #550000;
+        padding: 1em;
+    }
