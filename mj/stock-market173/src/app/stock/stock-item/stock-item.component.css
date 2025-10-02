@@ -1,5 +1,5 @@
 /* styles for the component */
-p {
+h4 {
     /* homeage to: https://meyerweb.com/eric/thoughts/2014/06/19/rebeccapurple/ */
     background-color: rebeccapurple;
     color: white;
@@ -28,4 +28,16 @@ p {
         background-color: #FFE3E3;
         color: #550000;
         padding: 1em;
+    }
+
+    .large-change {
+        font-size: 1.2em;
+    }
+
+    .small-change {
+        font-size: 0.8em;
+    }
+
+    .even-item {
+        text-decoration: underline;
     }
