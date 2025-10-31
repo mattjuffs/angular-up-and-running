@@ -1,48 +1,9 @@
-<!-- template definition -->
 <h4>
   stock-item works!
 </h4>
 
-<!--
-  multiple index items are available:
-    index
-    even
-    odd
-    first
-    last
--->
-<div class="stocks-container" *ngIf="stocks.length > 2">
-
-  <div class="stock-container" *ngFor="let stock of stocks; even as isEven; index as i; trackBy: trackByStockCode">
-    <div class="name"><h3>{{ stock.name + ' (' + stock.code + ')' }}</h3></div>
-
-    <!-- [class] property binding -->
-    <div [class]="stock.isPositiveChange() ? 'positive' : 'negative'">£ {{ stock.price }}</div>
-
-    <!-- using NgClass directive (preferred) -->
-    <!--<div class="price" [ngClass]="stockClasses">£ {{ stock.price }}</div>-->
-
-    <!-- using NgStyle directive -->
-    <!--<div class="price" [ngStyle]="stockStyles">£ {{ stock.price }}</div>-->
-    <!--<div class="price" [style.background-color]="stock.isPositiveChange() ? 'green' : 'red'">£ {{ stock.price }}</div>-->
-
-    <!-- using multiple class property bindings -->
-    <!--<div class="price" [class.positive]="stock.isPositiveChange()" [class.negative]="!stock.isPositiveChange()">£ {{ stock.price }}</div>-->
-
-    <!-- (click) binds to the click event -->
-    <!-- using disabled attribute -->
-    <!--<button (click)="toggleFavourite($event)" [disabled]="stock.favourite">Add to Favourite</button>-->
-
-    <!-- using ngIf structural directive -->
-    <button (click)="toggleFavourite($event, i)" *ngIf="!stock.favourite">Add to Favourite</button>
-
-    <p [class.even-item]="isEven">even: {{ isEven }}</p>
-
-    <ul [ngSwitch]="stock.type">
-      <li *ngSwitchCase="'stock'">Stock type</li>
-      <li *ngSwitchCase="'mjtest'">MJTest type</li>
-      <li *ngSwitchDefault>Default</li>
-    </ul>
-  </div>
-
+<div class="stock-container">
+  <div class="name"><h3>{{ stock.name + ' (' + stock.code + ')' }}</h3></div>
+  <div [class]="stock.isPositiveChange() ? 'positive' : 'negative'">£ {{ stock.price }}</div>
+  <ng-content></ng-content>
 </div>

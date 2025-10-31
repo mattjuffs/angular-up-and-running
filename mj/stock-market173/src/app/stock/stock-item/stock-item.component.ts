@@ -1,86 +1,61 @@
 // component definition
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ChangeDetectionStrategy, OnChanges, OnDestroy, DoCheck, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit, SimpleChanges } from '@angular/core';
 
 import {Stock} from '../../model/stock';
 
 @Component({
   selector: 'app-stock-item',
   templateUrl: './stock-item.component.html',
-  styleUrls: ['./stock-item.component.css']
+  styleUrls: ['./stock-item.component.css'],
+  changeDetection: ChangeDetectionStrategy.Default
 })
-export class StockItemComponent implements OnInit { // implement OnInit interface, from Angular
+export class StockItemComponent
+implements OnInit, OnChanges, OnDestroy, DoCheck, AfterContentChecked, AfterContentInit, AfterViewChecked, AfterViewInit { // implement OnInit interface, from Angular
 
-  // define fields we want to access from the HTML
-  /*
-  public name: string;
-  public code: string;
-  public price: number;
-  public previousPrice: number;
-  public positiveChange: boolean;
-  public favourite: boolean;
-  */
+  @Input() public stock: Stock;
+  @Output() private toggleFavourite: EventEmitter<Stock>;
 
-  public stock: Stock;
-  public stockClasses; // JSON object to hold the CSS classes
-  public stockStyles; // JSON object to hold the CSS styles
-
-  public stocks: Array<Stock>;
-
-  constructor() { }
-
-  ngOnInit() {// triggered when a component is initialised
-    // initialise the values for the fields
-    /*this.name = "Test Stock Company";
-    this.code = "TSC";
-    this.price = 85;
-    this.previousPrice = 80;
-    this.positiveChange = (this.price >= this.previousPrice);
-    this.favourite = false;*/
-
-    // this.stock = new Stock("Test Stock Company", "TSC", 85, 80);
-
-    // let diff = (this.stock.price / this.stock.previousPrice) - 1;
-    // let largeChange = Math.abs(diff) > 0.01;
-
-    /*this.stockClasses = {
-        "positive": this.stock.isPositiveChange(),
-        "negative": !this.stock.isPositiveChange(),
-        "large-change": largeChange,
-        "small-change": !largeChange
-    };*/
-
-    /*this.stockStyles = {
-      "color": this.stock.isPositiveChange() ? "green" : "red",
-      "font-size": largeChange ? "1.2em" : "0.8em"
-    }*/
-
-    // array of stocks
-    this.stocks = [
-      new Stock('1st Company', 'TSC', 85, 80, 'stock'),
-      new Stock('2nd Company', 'SSC', 10, 20, 'mjtest'),
-      new Stock('3rd Company', '3SC', 80, 80, 'stock'),
-      new Stock('4th Company', '4SC', 876, 765, '')
-    ];
+  constructor() {
+    this.toggleFavourite = new EventEmitter<Stock>();
   }
 
-  // event function - trigger on click
-  toggleFavourite(event, index) {
-    console.log('toggleFavourite() called!', index, event);
-    // this.favourite = !this.favourite;
-
-    // update the price
-    // this.stock.previousPrice = this.stock.price;
-    // this.stock.price = 75;
-
-    // this.stock.favourite = !this.stock.favourite;
-
-    // using index (of array)
-    this.stocks[index].favourite = !this.stocks[index].favourite;
+  ngOnInit() {
+    console.log('StockItem: OnInit');
   }
 
-  // use this to track an object in an array by stock.code, rather than using the DOM object reference
-  // helpful when reloading/amending the DOM and array, to keep track of items
-  trackByStockCode(index, stock) {
-    return stock.code;
+  onToggleFavourite(event) {
+    this.toggleFavourite.emit(this.stock);
+  }
+
+  changeStockPrice() {
+    this.stock.price += 5;
+  }
+
+  ngAfterViewInit() {
+    console.log('StockItem: AfterViewInit');
+  }
+
+  ngAfterViewChecked(): void {
+    console.log('StockItem: AfterViewChecked');
+  }
+
+  ngAfterContentInit(): void {
+    console.log('StockItem: AfterContentInit');
+  }
+
+  ngAfterContentChecked(): void {
+    console.log('StockItem: AfterContentChecked');
+  }
+
+  ngDoCheck(): void {
+    console.log('StockItem: DoCheck');
+  }
+
+  ngOnDestroy(): void {
+    console.log('StockItem: OnDestroy');
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log('StockItem: OnChanges - ', changes);
   }
 }
