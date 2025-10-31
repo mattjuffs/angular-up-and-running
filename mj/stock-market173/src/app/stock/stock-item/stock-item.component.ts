@@ -8,7 +8,7 @@ import {Stock} from '../../model/stock';
   templateUrl: './stock-item.component.html',
   styleUrls: ['./stock-item.component.css']
 })
-export class StockItemComponent implements OnInit {// implement OnInit interface, from Angular
+export class StockItemComponent implements OnInit { // implement OnInit interface, from Angular
 
   // define fields we want to access from the HTML
   /*
@@ -21,8 +21,8 @@ export class StockItemComponent implements OnInit {// implement OnInit interface
   */
 
   public stock: Stock;
-  public stockClasses;// JSON object to hold the CSS classes
-  public stockStyles;// JSON object to hold the CSS styles
+  public stockClasses; // JSON object to hold the CSS classes
+  public stockStyles; // JSON object to hold the CSS styles
 
   public stocks: Array<Stock>;
 
@@ -37,10 +37,10 @@ export class StockItemComponent implements OnInit {// implement OnInit interface
     this.positiveChange = (this.price >= this.previousPrice);
     this.favourite = false;*/
 
-    //this.stock = new Stock("Test Stock Company", "TSC", 85, 80);
+    // this.stock = new Stock("Test Stock Company", "TSC", 85, 80);
 
-    //let diff = (this.stock.price / this.stock.previousPrice) - 1;
-    //let largeChange = Math.abs(diff) > 0.01;
+    // let diff = (this.stock.price / this.stock.previousPrice) - 1;
+    // let largeChange = Math.abs(diff) > 0.01;
 
     /*this.stockClasses = {
         "positive": this.stock.isPositiveChange(),
@@ -56,23 +56,23 @@ export class StockItemComponent implements OnInit {// implement OnInit interface
 
     // array of stocks
     this.stocks = [
-      new Stock('1st Company', 'TSC', 85, 80, "stock"),
-      new Stock('2nd Company', 'SSC', 10, 20, "mjtest"),
-      new Stock('3rd Company', '3SC', 80, 80, "stock"),
-      new Stock('4th Company', '4SC', 876, 765, "")
+      new Stock('1st Company', 'TSC', 85, 80, 'stock'),
+      new Stock('2nd Company', 'SSC', 10, 20, 'mjtest'),
+      new Stock('3rd Company', '3SC', 80, 80, 'stock'),
+      new Stock('4th Company', '4SC', 876, 765, '')
     ];
   }
 
   // event function - trigger on click
   toggleFavourite(event, index) {
-    console.log("toggleFavourite() called!", index, event);
-    //this.favourite = !this.favourite;
+    console.log('toggleFavourite() called!', index, event);
+    // this.favourite = !this.favourite;
 
     // update the price
-    //this.stock.previousPrice = this.stock.price;
-    //this.stock.price = 75;
+    // this.stock.previousPrice = this.stock.price;
+    // this.stock.price = 75;
 
-    //this.stock.favourite = !this.stock.favourite;
+    // this.stock.favourite = !this.stock.favourite;
 
     // using index (of array)
     this.stocks[index].favourite = !this.stocks[index].favourite;
